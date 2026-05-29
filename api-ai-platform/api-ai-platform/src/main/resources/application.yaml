@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: api-ai-platform
+
+  # ─── MySQL Database ───────────────────────────────────────
+  datasource:
+    url: jdbc:mysql://localhost:3306/rag_api
+    username: root
+    password: Himanshu@2002#   # ← yahan apna actual MySQL password daalo
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # ─── JPA / Hibernate ──────────────────────────────────────
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+  # ─── File Upload ──────────────────────────────────────────
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  # ─── Redis Cache ──────────────────────────────────────────
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  cache:
+    type: redis
+
+# ─── Server ────────────────────────────────────────────────
+server:
+  port: 3001
+
+# ─── JWT ───────────────────────────────────────────────────
+jwt:
+  secret: 9f2c1a8e5b4d7f6c3e9a0d2b8c7e4f1a6d9b3e5c0a8f2d1e4b7c6a9f5e3d2b8
+  expiration: 86400000
+
+# ─── OpenAI ────────────────────────────────────────────────
+openai:
+  api:
+    key: your_openai_api_key_here
+
+# ─── Logging ───────────────────────────────────────────────
+logging:
+  level:
+    root: INFO
+    com.aiplatform: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# ─── App Defaults ──────────────────────────────────────────
+app:
+  default:
+    admin:
+      email: admin@example.com
+      password: Admin@123
